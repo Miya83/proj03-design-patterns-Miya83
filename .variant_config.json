@@ -1,0 +1,86 @@
+{
+  "student_id": "patterns",
+  "hash_seed": 1537069841451680993,
+  "domain": {
+    "name": "E-Commerce Platform",
+    "context": "online shopping system",
+    "examples": [
+      "products",
+      "orders",
+      "payments",
+      "shipping"
+    ]
+  },
+  "core_patterns": [
+    {
+      "name": "Factory Method",
+      "module": "factory",
+      "category": "creational",
+      "description": "Creates objects without specifying the exact class",
+      "difficulty": "easy"
+    },
+    {
+      "name": "Observer",
+      "module": "observer",
+      "category": "behavioral",
+      "description": "Notify multiple objects of state changes",
+      "difficulty": "medium"
+    },
+    {
+      "name": "Strategy",
+      "module": "strategy",
+      "category": "behavioral",
+      "description": "Encapsulate interchangeable algorithms",
+      "difficulty": "easy"
+    }
+  ],
+  "variant_patterns": [
+    {
+      "name": "Adapter",
+      "module": "adapter",
+      "category": "structural",
+      "description": "Allow incompatible interfaces to work together",
+      "difficulty": "easy",
+      "domain_context": "online shopping system",
+      "requirements": [
+        "Implement Adapter pattern using online shopping system examples",
+        "Create abstract base class with proper interface",
+        "Implement at least 2 concrete classes",
+        "Include comprehensive unit tests (>=90% coverage)",
+        "Add UML class diagram in docs/uml/"
+      ]
+    },
+    {
+      "name": "Template Method",
+      "module": "template_method",
+      "category": "behavioral",
+      "description": "Define the skeleton of an algorithm",
+      "difficulty": "easy",
+      "domain_context": "online shopping system",
+      "requirements": [
+        "Implement Template Method pattern using online shopping system examples",
+        "Create abstract base class with proper interface",
+        "Implement at least 2 concrete classes",
+        "Include comprehensive unit tests (>=90% coverage)",
+        "Add UML class diagram in docs/uml/"
+      ]
+    }
+  ],
+  "all_patterns": [
+    "Factory Method",
+    "Observer",
+    "Strategy",
+    "Adapter",
+    "Template Method"
+  ],
+  "total_patterns": 5,
+  "grading": {
+    "factory_method": 20,
+    "observer": 15,
+    "strategy": 15,
+    "variant_pattern_1": 15,
+    "variant_pattern_2": 15,
+    "documentation": 10,
+    "uml_diagrams": 10
+  }
+}
