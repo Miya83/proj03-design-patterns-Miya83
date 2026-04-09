@@ -1,50 +1,53 @@
+
 """
-Observer Pattern for E-Commerce Platform.
+Observer Pattern
+Notify multiple objects of state changes.
 """
 from abc import ABC, abstractmethod
 from typing import List, Any
 
 class Subject(ABC):
+    """Subject that observers watch."""
+    
     def __init__(self):
         self._observers: List['Observer'] = []
         self._state: Any = None
-
+    
     def attach(self, observer: 'Observer') -> None:
         if observer not in self._observers:
             self._observers.append(observer)
-
+    
     def detach(self, observer: 'Observer') -> None:
         if observer in self._observers:
             self._observers.remove(observer)
-
+    
     def notify(self, event: str = None) -> None:
         for observer in self._observers:
-            observer.update(event if event else self._state)
+            observer.update(self)
 
 class Observer(ABC):
+    """Observer interface."""
+    
     @abstractmethod
-    def update(self, event: str) -> None:
+    def update(self, subject: Subject) -> None:
         pass
 
 class ConcreteSubject(Subject):
-    def __init__(self, order_id: str = "default"):
+    def __init__(self):
         super().__init__()
-        self.order_id = order_id
-        self._status = "Pending"
+        self._state = "initial"
     
-    @property
-    def status(self):
-        return self._status
+    def get_state(self):
+        return self._state
     
-    @status.setter
-    def status(self, new_status: str):
-        self._status = new_status
-        self.notify(new_status)
+    def set_state(self, state):
+        self._state = state
+        self.notify()
 
 class ConcreteObserverA(Observer):
-    def update(self, event: str) -> None:
-        print(f"Customer: Order status is now '{event}'")
+    def update(self, subject: Subject) -> None:
+        print("ConcreteObserverA received update")
 
 class ConcreteObserverB(Observer):
-    def update(self, event: str) -> None:
-        print(f"Warehouse: Order status updated to '{event}'")
+    def update(self, subject: Subject) -> None:
+        print("ConcreteObserverB received update")
