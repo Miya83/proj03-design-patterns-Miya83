@@ -1,0 +1,63 @@
+DESIGN PATTERNS UML DIAGRAMS
+=============================
+
+PATTERN 1: TEMPLATE METHOD
+---------------------------
+AbstractClass (abstract)
+    - template_method()
+    - primitive_operation_a()
+    - primitive_operation_b()
+           |
+           | (inherits)
+           |
+    +------+------+
+    |             |
+ConcreteClassA   ConcreteClassB
+
+
+PATTERN 2: OBSERVER
+-------------------
+Subject (interface) -----> Observer (interface)
+    - attach()               - update()
+    - detach()
+    - notify()
+           |                        |
+           | (inherits)              | (inherits)
+           |                        |
+    ConcreteSubject          ConcreteObserver
+    - state                   - update()
+
+
+PATTERN 3: STRATEGY
+-------------------
+Context ---------> Strategy (interface)
+    - strategy         - execute()
+    - execute()
+    - set_strategy()
+                           |
+                           | (inherits)
+                           |
+                +----------+----------+
+                |          |          |
+          StrategyA   StrategyB   StrategyC
+
+
+PATTERN 4: FACTORY METHOD
+-------------------------
+Creator (abstract) -----> Product (interface)
+    - factory_method()       - operation()
+    - some_operation()
+           |                        |
+           | (inherits)              | (inherits)
+           |                        |
+    ConcreteCreator          ConcreteProduct
+
+
+PATTERN 5: ADAPTER
+------------------
+Target (interface)         Adaptee
+    - request()             - specific_request()
+           |                        |
+           |                        |
+           +------ Adapter ---------+
+                  - request()
