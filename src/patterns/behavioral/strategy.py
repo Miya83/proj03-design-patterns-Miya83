@@ -1,44 +1,38 @@
+
 """
-Strategy Pattern
-Encapsulate interchangeable algorithms.
+Strategy Pattern for E-Commerce Platform.
 """
 from abc import ABC, abstractmethod
 from typing import List
 
 class Strategy(ABC):
-    """Strategy interface."""
-    
     @abstractmethod
     def execute(self, data: List[int]) -> List[int]:
         pass
 
 class Context:
-    """Context uses a Strategy."""
-    
     def __init__(self, strategy: Strategy):
         self._strategy = strategy
-    
+
     def set_strategy(self, strategy: Strategy) -> None:
         self._strategy = strategy
-    
+
     def execute_strategy(self, data: List[int]) -> List[int]:
         return self._strategy.execute(data)
 
     def do_something(self, data: List[int]) -> List[int]:
-        """Alias for execute_strategy (used by visible tests)."""
         return self.execute_strategy(data)
 
 class ConcreteStrategyA(Strategy):
-    """Concrete strategy A."""
-
     def execute(self, data: List[int]) -> List[int]:
-        raise NotImplementedError("ConcreteStrategyA.execute() not yet implemented")
+        # Regular pricing - no discount
+        price = data[0]
+        quantity = data[1]
+        return [price * quantity]
 
 class ConcreteStrategyB(Strategy):
-    """Concrete strategy B."""
-
     def execute(self, data: List[int]) -> List[int]:
-        raise NotImplementedError("ConcreteStrategyB.execute() not yet implemented")
-
-# YOUR CODE: Implement ConcreteStrategyA (e.g., BubbleSort)
-# YOUR CODE: Implement ConcreteStrategyB (e.g., QuickSort)
+        # Seasonal pricing - 15% discount
+        price = data[0]
+        quantity = data[1]
+        return [int((price * quantity) * 0.85)]
